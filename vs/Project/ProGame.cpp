@@ -26,22 +26,119 @@ ProGame::~ProGame(){
 void ProGame::Init() {
 
 	// Generate Platforms
-	Texture* platformTexture = new Texture("platform.png");
-	vec2 start = vec2(300, 33);
-	for (int i = 0; i < 8; i++) {
-		Sprite* platformSprite = new Sprite(platformTexture, defaultSpriteShader, defaultQuad);
-		platformSprite->SetPosition(start.x + i * 210, start.y + i * 90);
-		platformSprite->SetSize(150, 32);
-		platformSprite->SetBoundingBoxSize(platformSprite->GetScaleWidth() - (16 * platformSprite->GetScale()), platformSprite->GetScaleHeight());
-		platforms.push_back(platformSprite);
+	//pilar
+	Texture* pillarTexture = new Texture("platNaik.png");
+	vec2 awal = vec2(2500, -191);
+
+	int pillarPerRow = 1; // Jumlah pillar di baris pertama
+	int pillarCount = 0; // Menghitung jumlah pillar yang telah dibuat
+	for (int row = 0; pillarCount < 10; row++) {
+		for (int i = 0; i < pillarPerRow && pillarCount < 10; i++) {
+			Sprite* pillarSprite = new Sprite(pillarTexture, defaultSpriteShader, defaultQuad);
+			// Hitung posisi X untuk menempatkan pillar di tengah
+			float posX = awal.x - (i * 300);
+			// Posisi Y dimulai dari bawah dan naik ke atas setiap baris
+			float posY = awal.y + (7 - row) * 64;
+			pillarSprite->SetPosition(posX, posY);
+			pillarSprite->SetSize(64, 64);
+			pillarSprite->SetBoundingBoxSize(pillarSprite->GetScaleWidth() - (16 * pillarSprite->GetScale()), pillarSprite->GetScaleHeight());
+			pillar.push_back(pillarSprite);
+			pillarCount++;
+		}
+		pillarPerRow++; // Tambah jumlah pillar di baris berikutnya
 	}
 
+	//piramid kiri jatuh
+	Texture* platformTexture = new Texture("platNaik.png");
+	vec2 start = vec2(7440, -191);
+
+	int platformsPerRow = 1; // Jumlah platform di baris pertama
+	int platformCount = 0; // Menghitung jumlah platform yang telah dibuat
+	for (int row = 0; platformCount < 10; row++) {
+		for (int i = 0; i < platformsPerRow && platformCount < 10; i++) {
+			Sprite* platformSprite = new Sprite(platformTexture, defaultSpriteShader, defaultQuad);
+			// Hitung posisi X untuk menempatkan platform di tengah
+			float posX = start.x - (i * 64);
+			// Posisi Y dimulai dari bawah dan naik ke atas setiap baris
+			float posY = start.y + (7 - row) * 64;
+			platformSprite->SetPosition(posX, posY);
+			platformSprite->SetSize(64, 64);
+			platformSprite->SetBoundingBoxSize(platformSprite->GetScaleWidth() - (16 * platformSprite->GetScale()), platformSprite->GetScaleHeight());
+			platforms.push_back(platformSprite);
+			platformCount++;
+		}
+		platformsPerRow++; // Tambah jumlah platform di baris berikutnya
+	}
+	//piramid kanan jatuh
+	Texture* platform2Texture = new Texture("platNaik.png");
+	vec2 start2 = vec2(7650, -191);
+
+	int platforms2PerRow = 1; // Jumlah platform di baris pertama
+	int platform2Count = 0; // Menghitung jumlah platform yang telah dibuat
+	for (int row = 0; platform2Count < 10; row++) {
+		for (int i = 0; i < platforms2PerRow && platform2Count < 10; i++) {
+			Sprite* platform2Sprite = new Sprite(platform2Texture, defaultSpriteShader, defaultQuad);
+			// Hitung posisi X untuk menempatkan platform di tengah
+			float posX = start2.x + (i * 64);
+			// Posisi Y dimulai dari bawah dan naik ke atas setiap baris
+			float posY = start2.y + (7 - row) * 64;
+			platform2Sprite->SetPosition(posX, posY);
+			platform2Sprite->SetSize(64, 64);
+			platform2Sprite->SetBoundingBoxSize(platform2Sprite->GetScaleWidth() - (16 * platform2Sprite->GetScale()), platform2Sprite->GetScaleHeight());
+			platforms2.push_back(platform2Sprite);
+			platform2Count++;
+		}
+		platforms2PerRow++; // Tambah jumlah platform di baris berikutnya
+	}
+	//piramid kanan
+	Texture* platform3Texture = new Texture("platNaik.png");
+	vec2 start3 = vec2(6700, -191);
+
+	int platforms3PerRow = 1; // Jumlah platform di baris pertama
+	int platform3Count = 0; // Menghitung jumlah platform yang telah dibuat
+	for (int row = 0; platform3Count < 10; row++) {
+		for (int i = 0; i < platforms3PerRow && platform3Count < 10; i++) {
+			Sprite* platform3Sprite = new Sprite(platform3Texture, defaultSpriteShader, defaultQuad);
+			// Hitung posisi X untuk menempatkan platform di tengah
+			float posX = start3.x + (i * 64);
+			// Posisi Y dimulai dari bawah dan naik ke atas setiap baris
+			float posY = start3.y + (7 - row) * 64;
+			platform3Sprite->SetPosition(posX, posY);
+			platform3Sprite->SetSize(64, 64);
+			platform3Sprite->SetBoundingBoxSize(platform3Sprite->GetScaleWidth() - (16 * platform3Sprite->GetScale()), platform3Sprite->GetScaleHeight());
+			platforms3.push_back(platform3Sprite);
+			platform3Count++;
+		}
+		platforms3PerRow++; // Tambah jumlah platform di baris berikutnya
+	}
+	//piramid kiri
+	Texture* platform4Texture = new Texture("platNaik.png");
+	vec2 start4 = vec2(6500, -191);
+
+	int platforms4PerRow = 1; // Jumlah platform di baris pertama
+	int platform4Count = 0; // Menghitung jumlah platform yang telah dibuat
+	for (int row = 0; platform4Count < 10; row++) {
+		for (int i = 0; i < platforms4PerRow && platform4Count < 10; i++) {
+			Sprite* platform4Sprite = new Sprite(platform4Texture, defaultSpriteShader, defaultQuad);
+			// Hitung posisi X untuk menempatkan platform di tengah
+			float posX = start4.x - (i * 64);
+			// Posisi Y dimulai dari bawah dan naik ke atas setiap baris
+			float posY = start4.y + (7 - row) * 64;
+			platform4Sprite->SetPosition(posX, posY);
+			platform4Sprite->SetSize(64, 64);
+			platform4Sprite->SetBoundingBoxSize(platform4Sprite->GetScaleWidth() - (16 * platform4Sprite->GetScale()), platform4Sprite->GetScaleHeight());
+			platforms4.push_back(platform4Sprite);
+			platform4Count++;
+		}
+		platforms4PerRow++; // Tambah jumlah platform di baris berikutnya
+	}
+	
 	Texture* groundTexture = new Texture("TilesAtas.png");
 	vec2 mulai = vec2(3, 1);
 	for (int i = 0; i < 25; i++) {
 		Sprite* groundSprite = new Sprite(groundTexture, defaultSpriteShader, defaultQuad);
-		groundSprite->SetPosition(mulai.x + i * 150,1);
-		groundSprite->SetSize(150, 32);
+		groundSprite->SetPosition(mulai.x + i * 150,mulai.y);
+		groundSprite->SetSize(150, 64);
 		groundSprite->SetBoundingBoxSize(groundSprite->GetScaleWidth() - (16 * groundSprite->GetScale()), groundSprite->GetScaleHeight());
 		ground.push_back(groundSprite);
 	}
@@ -51,7 +148,7 @@ void ProGame::Init() {
 	for (int i = 0; i < 8; i++) {
 		Sprite* ground2Sprite = new Sprite(ground2Texture, defaultSpriteShader, defaultQuad);
 		ground2Sprite->SetPosition(mulai2.x + i * 150, mulai2.y);
-		ground2Sprite->SetSize(150, 32);
+		ground2Sprite->SetSize(150, 64);
 		ground2Sprite->SetBoundingBoxSize(ground2Sprite->GetScaleWidth() - (16 * ground2Sprite->GetScale()), ground2Sprite->GetScaleHeight());
 		ground2.push_back(ground2Sprite);
 	}
@@ -61,9 +158,19 @@ void ProGame::Init() {
 	for (int i = 0; i < 15; i++) {
 		Sprite* ground3Sprite = new Sprite(ground3Texture, defaultSpriteShader, defaultQuad);
 		ground3Sprite->SetPosition(mulai3.x + i * 150, mulai3.y);
-		ground3Sprite->SetSize(150, 32);
+		ground3Sprite->SetSize(150, 64);
 		ground3Sprite->SetBoundingBoxSize(ground3Sprite->GetScaleWidth() - (16 * ground3Sprite->GetScale()), ground3Sprite->GetScaleHeight());
 		ground3.push_back(ground3Sprite);
+	}
+
+	Texture* ground4Texture = new Texture("TilesAtas.png");
+	vec2 mulai4= vec2(7650, 1);
+	for (int i = 0; i < 25; i++) {
+		Sprite* ground4Sprite = new Sprite(ground4Texture, defaultSpriteShader, defaultQuad);
+		ground4Sprite->SetPosition(mulai4.x + i * 150, mulai4.y);
+		ground4Sprite->SetSize(150, 64);
+		ground4Sprite->SetBoundingBoxSize(ground4Sprite->GetScaleWidth() - (16 * ground4Sprite->GetScale()), ground4Sprite->GetScaleHeight());
+		ground4.push_back(ground4Sprite);
 	}
 
 
@@ -77,7 +184,7 @@ void ProGame::Init() {
 	
 	Texture* monsterTexture = new Texture("monster.png");
 	monsterSprite = new Sprite(monsterTexture, defaultSpriteShader, defaultQuad);
-	monsterSprite->SetPosition(0, 34);
+	monsterSprite->SetPosition(0, 66);
 	monsterSprite->SetNumXFrames(6);
 	monsterSprite->SetNumYFrames(3);
 	monsterSprite->SetAnimationDuration(70);
@@ -153,7 +260,7 @@ void ProGame::Init() {
 	//music->Play(true);
 
 	sound = new Sound("jump.wav");
-	sound->SetVolume(100);
+	sound->SetVolume(10);
 
 	text = new Text("lucon.ttf", 24, defaultTextShader);
 	text->SetScale(1.0f);
@@ -176,7 +283,7 @@ void ProGame::UpdateCamera() {
 
 	// Kamera mengikuti monster di sepanjang sumbu x dan y
 	cameraPos.x = monsterPos.x - screenWidth / 2.0f + monsterSprite->GetScaleWidth() / 2.0f;
-	cameraPos.y = monsterPos.y - screenHeight / 2.0f + monsterSprite->GetScaleHeight() / 2.0f;
+	//cameraPos.y = monsterPos.y - screenHeight / 2.0f + monsterSprite->GetScaleHeight() / 2.0f;
 
 	// Batasi pergerakan kamera agar tidak keluar dari batas level
 	float levelWidth = 2000.0f;
@@ -202,24 +309,56 @@ void ProGame::Update() {
 
 	monsterSprite->PlayAnim("idle");
 
-	// Move monster sprite using keyboard
+	// Move monster sprite using keyboard and speed setting
 	vec2 oldMonsterPos = monsterSprite->GetPosition();
 	float x = oldMonsterPos.x, y = oldMonsterPos.y;
 	if (inputManager->IsKeyPressed("Run Right")) {
 		monsterSprite->PlayAnim("run");
-		x += 0.2f * GetGameTime();
+		x += 0.55f * GetGameTime();
 		monsterSprite->SetFlipHorizontal(false);
 	}
 
 	if (inputManager->IsKeyPressed("Run Left")) {
 		monsterSprite->PlayAnim("run");
-		x -= 0.2f * GetGameTime();
+		x -= 0.55f * GetGameTime();
 		monsterSprite->SetFlipHorizontal(true);
 	}
 
 	monsterSprite->SetPosition(x, y);
 	//colide
+	for (Sprite* s : pillar) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
 	for (Sprite* s : platforms) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	for (Sprite* s : platforms2) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	for (Sprite* s : platforms3) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	for (Sprite* s : platforms4) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert x position if collided
 			x = oldMonsterPos.x;
@@ -255,10 +394,19 @@ void ProGame::Update() {
 		}
 	}
 
+	for (Sprite* s : ground4) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+
 	if (inputManager->IsKeyPressed("Jump") && !jump) {
 		//Set gravity and yVelocity
 		float ratio = (GetGameTime() / 16.7f);
-		gravity = 0.16f * ratio;
+		gravity = 0.12f * ratio;
 		yVelocity = 1.8f;
 		jump = true;
 		sound->Play(false);
@@ -276,8 +424,55 @@ void ProGame::Update() {
 
 	y += yVelocity * GetGameTime();
 	monsterSprite->SetPosition(x, y);
+	for (Sprite* s : pillar) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
 
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
 	for (Sprite* s : platforms) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+	for (Sprite* s : platforms2) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+	for (Sprite* s : platforms3) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+	for (Sprite* s : platforms4) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
 			y = oldMonsterPos.y;
@@ -317,6 +512,19 @@ void ProGame::Update() {
 	}
 
 	for (Sprite* s : ground3) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+
+	for (Sprite* s : ground4) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
 			y = oldMonsterPos.y;
@@ -393,9 +601,25 @@ void ProGame::Update() {
 	// Pindahkan posisi semua sprite berdasarkan posisi kamera
 	vec2 cameraOffset = -cameraPos;
 	backgroundSprite->SetPosition(cameraOffset.x, cameraOffset.y);
+	for (Sprite* s : pillar) {
+		vec2 pillarPos = s->GetPosition();
+		s->SetPosition(pillarPos.x + cameraOffset.x, pillarPos.y + cameraOffset.y);
+	}
 	for (Sprite* s : platforms) {
 		vec2 platformPos = s->GetPosition();
 		s->SetPosition(platformPos.x + cameraOffset.x, platformPos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platforms2) {
+		vec2 platform2Pos = s->GetPosition();
+		s->SetPosition(platform2Pos.x + cameraOffset.x, platform2Pos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platforms3) {
+		vec2 platform3Pos = s->GetPosition();
+		s->SetPosition(platform3Pos.x + cameraOffset.x, platform3Pos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platforms4) {
+		vec2 platform4Pos = s->GetPosition();
+		s->SetPosition(platform4Pos.x + cameraOffset.x, platform4Pos.y + cameraOffset.y);
 	}
 	for (Sprite* s : ground) {
 		vec2 groundPos = s->GetPosition();
@@ -408,6 +632,10 @@ void ProGame::Update() {
 	for (Sprite* s : ground3) {
 		vec2 ground3Pos = s->GetPosition();
 		s->SetPosition(ground3Pos.x + cameraOffset.x, ground3Pos.y + cameraOffset.y);
+	}
+	for (Sprite* s : ground4) {
+		vec2 ground4Pos = s->GetPosition();
+		s->SetPosition(ground4Pos.x + cameraOffset.x, ground4Pos.y + cameraOffset.y);
 	}
 	monsterSprite->SetPosition(monsterSprite->GetPosition().x + cameraOffset.x, monsterSprite->GetPosition().y + cameraOffset.y);
 	projectileSprite->SetPosition(projectileSprite->GetPosition().x + cameraOffset.x, projectileSprite->GetPosition().y + cameraOffset.y);
@@ -444,7 +672,19 @@ void ProGame::Render() {
 
 	backgroundSprite->Draw();
 	text->Draw();
+	for (Sprite* s : pillar) {
+		s->Draw();
+	}
 	for (Sprite* s : platforms) {
+		s->Draw();
+	}
+	for (Sprite* s : platforms2) {
+		s->Draw();
+	}
+	for (Sprite* s : platforms3) {
+		s->Draw();
+	}
+	for (Sprite* s : platforms4) {
 		s->Draw();
 	}
 	for (Sprite* s : ground) {
@@ -454,6 +694,9 @@ void ProGame::Render() {
 		s->Draw();
 	}
 	for (Sprite* s : ground3) {
+		s->Draw();
+	}
+	for (Sprite* s : ground4) {
 		s->Draw();
 	}
 	monsterSprite->Draw();

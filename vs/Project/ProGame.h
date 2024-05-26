@@ -23,7 +23,12 @@ namespace Engine {
 		virtual void Render();
 	private:
 		Texture* dotTexture = NULL;
+		vector<Sprite*> pillar;
 		vector<Sprite*> platforms;
+		vector<Sprite*> platforms2;
+		vector<Sprite*> platforms3;
+		vector<Sprite*> platforms4;
+		vector<Sprite*> platforms5;
 		vector<Sprite*> ground;
 		vector<Sprite*> ground2;
 		vector<Sprite*> ground3;
@@ -51,6 +56,7 @@ namespace Engine {
 		bool jump = false, debug = false;
 		float mul = 1;
 		bool isProjectileActive = false;
+		
 
 		glm::vec2 cameraPos;
 		float cameraSpeed;
