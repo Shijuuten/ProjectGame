@@ -132,8 +132,59 @@ void ProGame::Init() {
 		}
 		platforms4PerRow++; // Tambah jumlah platform di baris berikutnya
 	}
+	//piramid ending
+	Texture* platform5Texture = new Texture("platNaik.png");
+	vec2 start5 = vec2(9800, 0);
+
+	int platforms5PerRow = 1; // Jumlah platform di baris pertama
+	int platform5Count = 0; // Menghitung jumlah platform yang telah dibuat
+	for (int row = 0; platform5Count < 28; row++) {
+		for (int i = 0; i < platforms5PerRow && platform5Count < 28; i++) {
+			Sprite* platform5Sprite = new Sprite(platform5Texture, defaultSpriteShader, defaultQuad);
+			// Hitung posisi X untuk menempatkan platform di tengah
+			float posX = start5.x - (i * 64);
+			// Posisi Y dimulai dari bawah dan naik ke atas setiap baris
+			float posY = start5.y + (7 - row) * 64;
+			platform5Sprite->SetPosition(posX, posY);
+			platform5Sprite->SetSize(64, 64);
+			platform5Sprite->SetBoundingBoxSize(platform5Sprite->GetScaleWidth() - (16 * platform5Sprite->GetScale()), platform5Sprite->GetScaleHeight());
+			platforms5.push_back(platform5Sprite);
+			platform5Count++;
+		}
+		platforms5PerRow++; // Tambah jumlah platform di baris berikutnya
+	}
+
+	//jalur atas
+	Texture* platAtasTexture = new Texture("platAtas.png");
+	vec2 hajime = vec2(2750, 450);
+	for (int i = 0; i < 10; i++) {
+		Sprite* platAtasSprite = new Sprite(platAtasTexture, defaultSpriteShader, defaultQuad);
+		platAtasSprite->SetPosition(hajime.x + i * 120, hajime.y);
+		platAtasSprite->SetSize(64, 64);
+		platAtasSprite->SetBoundingBoxSize(platAtasSprite->GetScaleWidth() - (16 * platAtasSprite->GetScale()), platAtasSprite->GetScaleHeight());
+		platAtas.push_back(platAtasSprite);
+	}
+	Texture* platAtas2Texture = new Texture("platAtas.png");
+	vec2 hajime2 = vec2(4150, 550);
+	for (int i = 0; i < 18; i++) {
+		Sprite* platAtas2Sprite = new Sprite(platAtas2Texture, defaultSpriteShader, defaultQuad);
+		platAtas2Sprite->SetPosition(hajime2.x + i * 64, hajime2.y);
+		platAtas2Sprite->SetSize(64, 64);
+		platAtas2Sprite->SetBoundingBoxSize(platAtas2Sprite->GetScaleWidth() - (16 * platAtas2Sprite->GetScale()), platAtas2Sprite->GetScaleHeight());
+		platAtas2.push_back(platAtas2Sprite);
+	}
+	Texture* platAtas3Texture = new Texture("platAtas.png");
+	vec2 hajime3 = vec2(5350, 400);
+	for (int i = 0; i < 9; i++) {
+		Sprite* platAtas3Sprite = new Sprite(platAtas3Texture, defaultSpriteShader, defaultQuad);
+		platAtas3Sprite->SetPosition(hajime3.x + i * 115, hajime3.y);
+		platAtas3Sprite->SetSize(64, 64);
+		platAtas3Sprite->SetBoundingBoxSize(platAtas3Sprite->GetScaleWidth() - (16 * platAtas3Sprite->GetScale()), platAtas3Sprite->GetScaleHeight());
+		platAtas3.push_back(platAtas3Sprite);
+	}
 	
-	Texture* groundTexture = new Texture("TilesAtas.png");
+	//jalur bawah
+	Texture* groundTexture = new Texture("TilesAtas.png");	
 	vec2 mulai = vec2(3, 1);
 	for (int i = 0; i < 25; i++) {
 		Sprite* groundSprite = new Sprite(groundTexture, defaultSpriteShader, defaultQuad);
@@ -326,6 +377,7 @@ void ProGame::Update() {
 
 	monsterSprite->SetPosition(x, y);
 	//colide
+	//pilar 
 	for (Sprite* s : pillar) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert x position if collided
@@ -334,6 +386,7 @@ void ProGame::Update() {
 			break;
 		}
 	}
+	//piramid
 	for (Sprite* s : platforms) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert x position if collided
@@ -366,7 +419,48 @@ void ProGame::Update() {
 			break;
 		}
 	}
-
+	for (Sprite* s : platforms5) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	//jalur atas
+	for (Sprite* s : platAtas) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	for (Sprite* s : platAtas2) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	for (Sprite* s : platAtas3) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	for (Sprite* s : platAtas4) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert x position if collided
+			x = oldMonsterPos.x;
+			monsterSprite->SetPosition(x, y);
+			break;
+		}
+	}
+	//jalur bawah
 	for (Sprite* s : ground) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert x position if collided
@@ -424,6 +518,7 @@ void ProGame::Update() {
 
 	y += yVelocity * GetGameTime();
 	monsterSprite->SetPosition(x, y);
+	//pillar
 	for (Sprite* s : pillar) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
@@ -436,6 +531,7 @@ void ProGame::Update() {
 			break;
 		}
 	}
+	//piramid
 	for (Sprite* s : platforms) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
@@ -484,7 +580,70 @@ void ProGame::Update() {
 			break;
 		}
 	}
+	for (Sprite* s : platforms5) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
 
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+
+	//jalur atas
+	for (Sprite* s : platAtas) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+	for (Sprite* s : platAtas2) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+	for (Sprite* s : platAtas3) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+	for (Sprite* s : platAtas4) {
+		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
+			//revert y position if collided
+			y = oldMonsterPos.y;
+			monsterSprite->SetPosition(x, y);
+
+			//and set jump to false and yVelovity to 0
+			yVelocity = 0;
+			jump = false;
+			break;
+		}
+	}
+
+	//jalur bawah
 	for (Sprite* s : ground) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
@@ -497,7 +656,6 @@ void ProGame::Update() {
 			break;
 		}
 	}
-
 	for (Sprite* s : ground2) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
@@ -510,7 +668,6 @@ void ProGame::Update() {
 			break;
 		}
 	}
-
 	for (Sprite* s : ground3) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
@@ -523,7 +680,6 @@ void ProGame::Update() {
 			break;
 		}
 	}
-
 	for (Sprite* s : ground4) {
 		if (s->GetBoundingBox()->CollideWith(monsterSprite->GetBoundingBox())) {
 			//revert y position if collided
@@ -621,6 +777,26 @@ void ProGame::Update() {
 		vec2 platform4Pos = s->GetPosition();
 		s->SetPosition(platform4Pos.x + cameraOffset.x, platform4Pos.y + cameraOffset.y);
 	}
+	for (Sprite* s : platforms5) {
+		vec2 platform5Pos = s->GetPosition();
+		s->SetPosition(platform5Pos.x + cameraOffset.x, platform5Pos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platAtas) {
+		vec2 platAtasPos = s->GetPosition();
+		s->SetPosition(platAtasPos.x + cameraOffset.x, platAtasPos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platAtas2) {
+		vec2 platAtas2Pos = s->GetPosition();
+		s->SetPosition(platAtas2Pos.x + cameraOffset.x, platAtas2Pos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platAtas3) {
+		vec2 platAtas3Pos = s->GetPosition();
+		s->SetPosition(platAtas3Pos.x + cameraOffset.x, platAtas3Pos.y + cameraOffset.y);
+	}
+	for (Sprite* s : platAtas4) {
+		vec2 platAtas4Pos = s->GetPosition();
+		s->SetPosition(platAtas4Pos.x + cameraOffset.x, platAtas4Pos.y + cameraOffset.y);
+	}
 	for (Sprite* s : ground) {
 		vec2 groundPos = s->GetPosition();
 		s->SetPosition(groundPos.x + cameraOffset.x, groundPos.y + cameraOffset.y);
@@ -685,6 +861,18 @@ void ProGame::Render() {
 		s->Draw();
 	}
 	for (Sprite* s : platforms4) {
+		s->Draw();
+	}
+	for (Sprite* s : platforms5) {
+		s->Draw();
+	}
+	for (Sprite* s : platAtas) {
+		s->Draw();
+	}
+	for (Sprite* s : platAtas2) {
+		s->Draw();
+	}
+	for (Sprite* s : platAtas3) {
 		s->Draw();
 	}
 	for (Sprite* s : ground) {

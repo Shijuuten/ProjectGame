@@ -29,6 +29,11 @@ namespace Engine {
 		vector<Sprite*> platforms3;
 		vector<Sprite*> platforms4;
 		vector<Sprite*> platforms5;
+		vector<Sprite*> platAtas;
+		vector<Sprite*> platAtas2;
+		vector<Sprite*> platAtas3;
+		vector<Sprite*> platAtas4;
+		vector<Sprite*> platAtas5;
 		vector<Sprite*> ground;
 		vector<Sprite*> ground2;
 		vector<Sprite*> ground3;
