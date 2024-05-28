@@ -224,8 +224,52 @@ void ProGame::Init() {
 		ground4.push_back(ground4Sprite);
 	}
 
-
-
+	// Simpan posisi awal setiap kelompok platform
+	for (Sprite* s : pillar) {
+		initialPlatformPositions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platforms) {
+		initialPlatform2Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platforms2) {
+		initialPlatform3Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platforms3) {
+		initialPlatform4Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platforms4) {
+		initialPlatform5Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platforms5) {
+		initialPlatform6Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platAtas) {
+		initialPlatform7Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platAtas2) {
+		initialPlatform8Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platAtas3) {
+		initialPlatform9Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platAtas4) {
+		initialPlatform10Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : platAtas5) {
+		initialPlatform11Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : ground) {
+		initialPlatform12Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : ground2) {
+		initialPlatform13Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : ground3) {
+		initialPlatform14Positions.push_back(s->GetPosition());
+	}
+	for (Sprite* s : ground4) {
+		initialPlatform15Positions.push_back(s->GetPosition());
+	}
 
 	//Create background
 	Texture* bgTexture = new Texture("bg.png");
@@ -243,6 +287,8 @@ void ProGame::Init() {
 	monsterSprite->AddAnimation("attack", 13, 14);
 	monsterSprite->AddAnimation("idle", 0, 3);
 	monsterSprite->AddAnimation("run", 6, 11);
+	monsterSprite->AddAnimation("die", 0, 14);
+	initialMonsterPos = monsterSprite->GetPosition();
 	// If frame size / sprite size is contain blank space or padding then you must resize the bounding box
 	// or collision shape to improve collision detection accuracy
 	//Chara2->SetBoundingBoxSize(Chara2->GetScaleWidth() - (8 * Chara2->GetScale()),
@@ -746,7 +792,59 @@ void ProGame::Update() {
 	if (inputManager->IsKeyReleased("Attack")) {
 		projectileSprite->PlayAnim("Idle");
 	}
-
+	// Tambahkan logika untuk reset level jika monster jatuh di bawah layar
+	if (y <= 0) {
+		// Reset posisi monster ke posisi awal
+		monsterSprite->SetPosition(initialMonsterPos.x, initialMonsterPos.y);
+		yVelocity = 0;
+		jump = false;
+		// Reset posisi platform ke posisi awal
+		for (size_t i = 0; i < pillar.size(); i++) {
+			pillar[i]->SetPosition(initialPlatformPositions[i].x, initialPlatformPositions[i].y);
+		}
+		for (size_t i = 0; i < platforms.size(); i++) {
+			platforms[i]->SetPosition(initialPlatform2Positions[i].x, initialPlatform2Positions[i].y);
+		}
+		for (size_t i = 0; i < platforms2.size(); i++) {
+			platforms2[i]->SetPosition(initialPlatform3Positions[i].x, initialPlatform3Positions[i].y);
+		}
+		for (size_t i = 0; i < platforms3.size(); i++) {
+			platforms3[i]->SetPosition(initialPlatform4Positions[i].x, initialPlatform4Positions[i].y);
+		}
+		for (size_t i = 0; i < platforms4.size(); i++) {
+			platforms4[i]->SetPosition(initialPlatform5Positions[i].x, initialPlatform5Positions[i].y);
+		}
+		for (size_t i = 0; i < platforms5.size(); i++) {
+			platforms5[i]->SetPosition(initialPlatform6Positions[i].x, initialPlatform6Positions[i].y);
+		}
+		for (size_t i = 0; i < platAtas.size(); i++) {
+			platAtas[i]->SetPosition(initialPlatform7Positions[i].x, initialPlatform7Positions[i].y);
+		}
+		for (size_t i = 0; i < platAtas2.size(); i++) {
+			platAtas2[i]->SetPosition(initialPlatform8Positions[i].x, initialPlatform8Positions[i].y);
+		}
+		for (size_t i = 0; i < platAtas3.size(); i++) {
+			platAtas3[i]->SetPosition(initialPlatform9Positions[i].x, initialPlatform9Positions[i].y);
+		}
+		for (size_t i = 0; i < platAtas4.size(); i++) {
+			platAtas4[i]->SetPosition(initialPlatform10Positions[i].x, initialPlatform10Positions[i].y);
+		}
+		for (size_t i = 0; i < platAtas5.size(); i++) {
+			platAtas5[i]->SetPosition(initialPlatform11Positions[i].x, initialPlatform11Positions[i].y);
+		}
+		for (size_t i = 0; i < ground.size(); i++) {
+			ground[i]->SetPosition(initialPlatform12Positions[i].x, initialPlatform12Positions[i].y);
+		}
+		for (size_t i = 0; i < ground2.size(); i++) {
+			ground2[i]->SetPosition(initialPlatform13Positions[i].x, initialPlatform13Positions[i].y);
+		}
+		for (size_t i = 0; i < ground3.size(); i++) {
+			ground3[i]->SetPosition(initialPlatform14Positions[i].x, initialPlatform14Positions[i].y);
+		}
+		for (size_t i = 0; i < ground4.size(); i++) {
+			ground4[i]->SetPosition(initialPlatform15Positions[i].x, initialPlatform15Positions[i].y);
+		}
+	}
 
 	// Update monster sprite animation
 	monsterSprite->Update(GetGameTime());

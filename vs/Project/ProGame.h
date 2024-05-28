@@ -62,6 +62,22 @@ namespace Engine {
 		float mul = 1;
 		bool isProjectileActive = false;
 		
+		glm::vec2 initialMonsterPos;
+		std::vector<glm::vec2> initialPlatformPositions;
+		std::vector<glm::vec2> initialPlatform2Positions;
+		std::vector<glm::vec2> initialPlatform3Positions;
+		std::vector<glm::vec2> initialPlatform4Positions;
+		std::vector<glm::vec2> initialPlatform5Positions;
+		std::vector<glm::vec2> initialPlatform6Positions;
+		std::vector<glm::vec2> initialPlatform7Positions;
+		std::vector<glm::vec2> initialPlatform8Positions;
+		std::vector<glm::vec2> initialPlatform9Positions;
+		std::vector<glm::vec2> initialPlatform10Positions;
+		std::vector<glm::vec2> initialPlatform11Positions;
+		std::vector<glm::vec2> initialPlatform12Positions;
+		std::vector<glm::vec2> initialPlatform13Positions;
+		std::vector<glm::vec2> initialPlatform14Positions;
+		std::vector<glm::vec2> initialPlatform15Positions;
 
 		glm::vec2 cameraPos;
 		float cameraSpeed;
