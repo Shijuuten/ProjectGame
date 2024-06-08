@@ -147,13 +147,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="DeathScreen.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InGame.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="ProGame.h" />
     <ClInclude Include="Quad.h" />
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="SATCollision.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Sound.h" />
@@ -161,11 +165,15 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="WinScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="DeathScreen.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InGame.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="ProGame.cpp" />
     <ClCompile Include="Quad.cpp" />
@@ -178,6 +186,7 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

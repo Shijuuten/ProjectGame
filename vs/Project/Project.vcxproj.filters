@@ -77,6 +77,21 @@
     <ClInclude Include="ProGame.h">
       <Filter>Demo Files</Filter>
     </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Demo Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InGame.h">
+      <Filter>Demo Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathScreen.h">
+      <Filter>Demo Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Demo Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScreen.h">
+      <Filter>Demo Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shader.cpp">
@@ -122,6 +137,18 @@
       <Filter>Demo Files</Filter>
     </ClCompile>
     <ClCompile Include="ProGame.cpp">
+      <Filter>Demo Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Demo Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InGame.cpp">
+      <Filter>Demo Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathScreen.cpp">
+      <Filter>Demo Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScreen.cpp">
       <Filter>Demo Files</Filter>
     </ClCompile>
   </ItemGroup>
